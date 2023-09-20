@@ -1,5 +1,5 @@
 ---
 layout: help
-permalink: /help
+permalink: /Help
 title: Help
 ---

@@ -1,0 +1,80 @@
+---
+layout: default
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clicking Game</title>
+    <style>
+        /* Add some basic CSS styles for the game */
+        #target {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+        }
+        #score {
+            text-align: center;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div id="target"></div>
+    <div id="score">Score: <span id="scoreValue">0</span></div>
+    <script>
+        
+// Get references to the target and score elements
+const target = document.getElementById("target");
+const scoreValue = document.getElementById("scoreValue");
+
+// Initialize variables
+let score = 0;
+let targetClicked = false;
+
+// Function to generate a random position for the target
+function getRandomPosition() {
+const maxWidth = window.innerWidth - target.clientWidth;
+const maxHeight = window.innerHeight - target.clientHeight;
+const randomX = Math.floor(Math.random() * maxWidth);
+const randomY = Math.floor(Math.random() * maxHeight);
+return { x: randomX, y: randomY };
+}
+
+// Function to move the target to a random position
+function moveTarget() {
+const newPosition = getRandomPosition();
+target.style.left = newPosition.x + "px";
+target.style.top = newPosition.y + "px";
+}
+
+// Function to handle when the target is clicked
+function handleTargetClick() {
+if (!targetClicked) {
+score++;
+scoreValue.textContent = score;
+targetClicked = true;
+moveTarget();
+setTimeout(() => {
+    targetClicked = false;
+}, 1000); // Reset the target after 1 second
+}
+}
+
+// Add a click event listener to the target
+target.addEventListener("click", handleTargetClick);
+
+// Initialize the game by moving the target to a random position
+moveTarget();
+
+
+    </script>
+</body>
+</html>
