@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz</title>
+</head>
+<body>
+    <h1>Quiz Time!</h1>
+    <form id="quiz-form">
+        <div id="quiz"></div>
+    </form>
+
+    <script>
+        const quizContainer = document.getElementById('quiz');
+
+        const myQuestions = [
+            {
+                question: "Guess what?",
+                correctAnswer: "What"
+            },
+        ];
+
+        function buildQuiz() {
+            const output = [];
+            myQuestions.forEach((currentQuestion, questionNumber) => {
+                const userAnswer = prompt(currentQuestion.question);
+                if (userAnswer === currentQuestion.correctAnswer) {
+                    output.push("Chicken But!\n");
+                } else {
+                    output.push("Incorrect.\n");
+                }
+            });
+            quizContainer.textContent = output.join('');
+        }
+
+        buildQuiz();
+    </script>
+</body>
+</html>
