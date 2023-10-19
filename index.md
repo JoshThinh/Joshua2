@@ -30,6 +30,5 @@ title: Student Blog
   </tr>
 </table>
 
-
 ## Hobbies
 I love playing volleyball and sports in general. I also like doing music like piano and the ukelele. I also love working out whenever I have free time.
